@@ -9,11 +9,22 @@ abstract class DroblinBase {
 
 class DroblinFunction : DroblinBase {
 	double a1, a0, b1, b0;
+	public DroblinFunction() {}
+	public DroblinFunction(double[] coeffs) {
+		if (coeffs.Length == 4) {
+			a1 = coeffs[0]; a0 = coeffs[1]; b1 = coeffs[2]; b0 = coeffs[3];
+		}
+	}
 	public override void InputCoefficients() {
 		Console.Write("a1 a0 b1 b0: ");
 		var vals = Console.ReadLine().Split();
 		a1 = double.Parse(vals[0]); a0 = double.Parse(vals[1]);
 		b1 = double.Parse(vals[2]); b0 = double.Parse(vals[3]);
+	}
+	public void InputCoefficients(double[] coeffs) {
+		if (coeffs.Length == 4) {
+			a1 = coeffs[0]; a0 = coeffs[1]; b1 = coeffs[2]; b0 = coeffs[3];
+		}
 	}
 	public override void PrintCoefficients() {
 		Console.WriteLine($"({a1}*x+{a0})/({b1}*x+{b0})");
@@ -27,11 +38,24 @@ class DroblinFunction : DroblinBase {
 
 class DroblinQuadraticFunction : DroblinBase {
 	double a2, a1, a0, b2, b1, b0;
+	public DroblinQuadraticFunction() {}
+	public DroblinQuadraticFunction(double[] coeffs) {
+		if (coeffs.Length == 6) {
+			a2 = coeffs[0]; a1 = coeffs[1]; a0 = coeffs[2];
+			b2 = coeffs[3]; b1 = coeffs[4]; b0 = coeffs[5];
+		}
+	}
 	public override void InputCoefficients() {
 		Console.Write("a2 a1 a0 b2 b1 b0: ");
 		var vals = Console.ReadLine().Split();
 		a2 = double.Parse(vals[0]); a1 = double.Parse(vals[1]); a0 = double.Parse(vals[2]);
 		b2 = double.Parse(vals[3]); b1 = double.Parse(vals[4]); b0 = double.Parse(vals[5]);
+	}
+	public void InputCoefficients(double[] coeffs) {
+		if (coeffs.Length == 6) {
+			a2 = coeffs[0]; a1 = coeffs[1]; a0 = coeffs[2];
+			b2 = coeffs[3]; b1 = coeffs[4]; b0 = coeffs[5];
+		}
 	}
 	public override void PrintCoefficients() {
 		Console.WriteLine($"({a2}*x^2+{a1}*x+{a0})/({b2}*x^2+{b1}*x+{b0})");
